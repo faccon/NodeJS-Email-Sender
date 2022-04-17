@@ -1,0 +1,18 @@
+{
+  "name": "email-sender-nodejs",
+  "version": "1.0.0",
+  "description": "A nodejs backend application that sends email",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Babatunde Adeniyi",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15"
+  }
+}
