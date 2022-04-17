@@ -12,6 +12,8 @@
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "handlebars": "^4.7.7",
+    "hogan-express": "^0.5.2",
     "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15"
   }

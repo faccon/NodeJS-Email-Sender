@@ -1,11 +1,21 @@
 require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
+const handlebars = require("handlebars");
 const http = require("http");
+const fs = require("fs");
 
 const PORT = process.env.PORT || 5001;
 const app = express();
 const server = http.createServer(app);
+
+app.use(express.json());
+app.engine("html", require("hogan-express"));
+app.set("views", __dirname + "/views");
+app.set("view engine", "html");
+
+var inviteHTML = fs.readFileSync(__dirname + "/views/invite.html", "utf8");
+var inviteTemplate = handlebars.compile(inviteHTML);
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -15,28 +25,25 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.use(express.json());
-
 app.get("/", (req, res) => {
   res.send("Node server is running");
 });
 
-// const options = {
-//   from: 'babdevs@outlook.com',
-//   to: 'babdevs@outlook.com',
-//   subject: "hi",
-//   text: "hi",
-// };
-
-// transporter.sendMail(options, (err, info) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(info.response);
-//   }
+app.get("/preview", (req, res) => {
+  res.render("invite", { firstname: "John" });
+});
 
 app.post("/", (req, res) => {
-  const options = req.body;
+  var sender = req.body.sender;
+  var recipient = req.body.recipient;
+  var url = req.body.url;
+
+  const options = {
+    from: "Babdev nodejs email sender",
+    to: "adeniyi.germany@gmail.com",
+    subject: "Invitation to chat on teamCONNECT",
+    html: inviteTemplate({ recipient, sender, url }),
+  };
 
   transporter.sendMail(options, (err, info) => {
     if (err) {
