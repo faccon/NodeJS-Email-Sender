@@ -28,10 +28,11 @@ const transporter = nodemailer.createTransport({
 });
 
 app.get("/", (req, res) => {
-  res.send("Node server is running");
+  res.send("Email backend server is running");
 });
 
 app.post("/send/template/invite", (req, res) => {
+
   var sender = req.body.sender;
   var to = req.body.to;
   var recipient = req.body.recipient;
