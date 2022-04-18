@@ -6,4 +6,4 @@ applications:
     - route: babs-nodejs-es.eu-gb.mybluemix.net
   memmory: 128M
   buildpack: nodejs_buildpack
-  intances: 2
+  intances: 1
