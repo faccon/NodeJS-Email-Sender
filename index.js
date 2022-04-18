@@ -20,7 +20,7 @@ var inviteHTML = fs.readFileSync(__dirname + "/views/invite.html", "utf8");
 var inviteTemplate = handlebars.compile(inviteHTML);
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
+  host: process.env.EMAIL_HOST,
   auth: {
     user: process.env.MAIL_USER,
     pass: process.env.MAIL_PASSWORD,
