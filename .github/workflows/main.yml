@@ -1,4 +1,4 @@
-name: deploy teamConnectApp
+name: deploy NodeJS Email Sender
 
 on: push
 
@@ -16,8 +16,8 @@ defaults:
     working-directory: .
 
 jobs:
-  setup-build-publish-deploy-frontend:
-    name: Setup, Build, Publish, and Deploy Frontend App
+  Deploy-app:
+    name: Deploy NodeJS Email Sender App
     runs-on: ubuntu-latest
 
     steps:
